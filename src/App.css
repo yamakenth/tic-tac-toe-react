@@ -11,25 +11,29 @@ h1 {
   font-size: 56px;
 }
 
+h2 {
+  font-size: 22px;
+}
+
 .header-container {
   padding: 10px;
   margin-bottom: 40px;
 }
 
 .game-container {
-  border: 1px solid #ff0000;
   padding: 10px;
 }
 
 .board-container {
-  border: 1px solid #0000ff;
   margin-bottom: 20px;
   padding: 10px;
 }
 
 .scores-container {
-  border: 1px solid #0000ff;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (min-width: 320px) {
@@ -44,4 +48,44 @@ h1 {
     height: 50vh;
     width: 50vh;
   }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+}
+
+.cell {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+}
+
+.middle-row {
+  border-top: 3px solid #000000;
+  border-bottom: 3px solid #000000;
+}
+
+.middle-col {
+  border-left: 3px solid #000000;
+  border-right: 3px solid #000000;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.score > p {
+  font-size: 28px;
 }
