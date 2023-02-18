@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
+import Game from "./components/Game";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <p>Hello world!</p>
+      <div className="header-container">
+        <h1>Tic-Tac-Toe</h1>
+      </div>
+      <Game />
     </div>
   );
 }
-
-export default App;
