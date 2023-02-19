@@ -11,13 +11,24 @@ export default function Game() {
   const [moves, setMoves] = useState<moves>([]);
   const [status, setStatus] = useState<status>("PENDING");
   const [games, setGames] = useState<number>(1);
+  const [player1Wins, setPlayer1Wins] = useState(0);
+  const [player2Wins, setPlayer2Wins] = useState(0);
 
   useEffect(() => setStatus(play(moves)), [moves]);
+  useEffect(() => {
+    if (status === "PLAYER1") {
+      setPlayer1Wins(player1Wins + 1);
+    } else if (status === "PLAYER2") {
+      setPlayer2Wins(player2Wins + 1);
+    }
+  }, [status]);
 
   function handleRestart(): void {
     setMoves([]);
     setStatus("PENDING");
     setGames(1);
+    setPlayer1Wins(0);
+    setPlayer2Wins(0);
   }
 
   function handleContinue(): void {
@@ -34,7 +45,7 @@ export default function Game() {
             <div className="status-container">
               <div className="modal-score">
                 <p>Player1</p>
-                <p>0</p>
+                <p>{player1Wins}</p>
               </div>
               <div className="modal-score">
                 <p>Games</p>
@@ -42,7 +53,7 @@ export default function Game() {
               </div>
               <div className="modal-score">
                 <p>Player2</p>
-                <p>0</p>
+                <p>{player2Wins}</p>
               </div>
             </div>
             <p>
@@ -66,7 +77,12 @@ export default function Game() {
         </div>
       )}
       <Board moves={moves} setMoves={setMoves} />
-      <Scores moves={moves} games={games} />
+      <Scores
+        moves={moves}
+        games={games}
+        player1Wins={player1Wins}
+        player2Wins={player2Wins}
+      />
     </div>
   );
 }
