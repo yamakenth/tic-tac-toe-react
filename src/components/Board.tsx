@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 import { moves } from "./Game";
 
@@ -8,32 +8,28 @@ interface BoardProps {
 }
 
 export default function Board({ moves, setMoves }: BoardProps) {
-  const [moves1, setMoves1] = useState<moves>([]);
-  const [moves2, setMoves2] = useState<moves>([]);
-
   function handleClick(r: number, c: number) {
     if (moves.some((move) => move[0] === r && move[1] === c)) {
       return;
     }
 
     setMoves(moves.concat([[r, c]]));
-    if (moves.length % 2 === 0) {
-      setMoves1(moves1.concat([[r, c]]));
-    } else {
-      setMoves2(moves2.concat([[r, c]]));
-    }
   }
 
-  function isCellInMoves(r: number, c: number) {
+  function isCellInMoves(r: number, c: number): boolean {
     return moves.some((move) => move[0] === r && move[1] === c);
   }
 
-  function isCellInMoves1(r: number, c: number) {
-    return moves1.some((move) => move[0] === r && move[1] === c);
+  function isCellInMoves1(r: number, c: number): boolean {
+    return moves.some(
+      (move, i) => move[0] === r && move[1] === c && i % 2 === 0
+    );
   }
 
-  function isCellInMoves2(r: number, c: number) {
-    return moves2.some((move) => move[0] === r && move[1] === c);
+  function isCellInMoves2(r: number, c: number): boolean {
+    return moves.some(
+      (move, i) => move[0] === r && move[1] === c && i % 2 === 1
+    );
   }
 
   return (

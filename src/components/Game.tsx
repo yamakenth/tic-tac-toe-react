@@ -13,6 +13,11 @@ export default function Game() {
 
   useEffect(() => setStatus(play(moves)), [moves]);
 
+  function handleRestart() {
+    setMoves([]);
+    setStatus("PENDING");
+  }
+
   return (
     <div className="game-container">
       {status !== "PENDING" && (
@@ -41,7 +46,7 @@ export default function Game() {
               <button type="button" className="another-round">
                 ANOTHER ROUND
               </button>
-              <button type="button" className="restart">
+              <button type="button" className="restart" onClick={handleRestart}>
                 RESTART
               </button>
             </div>
