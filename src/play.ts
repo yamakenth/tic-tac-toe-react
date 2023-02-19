@@ -26,7 +26,7 @@ export function play(moves: moves): status {
       break;
     }
 
-    // Player1's turn
+    // Player2's turn
     [r, c] = moves[i + 1];
     rows[r] -= 1;
     cols[c] -= 1;
