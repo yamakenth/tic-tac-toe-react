@@ -9,13 +9,21 @@ export type moves = number[][];
 
 export default function Game() {
   const [moves, setMoves] = useState<moves>([]);
-  const [status, setStatus] = useState<status>();
+  const [status, setStatus] = useState<status>("PENDING");
+  const [games, setGames] = useState<number>(1);
 
   useEffect(() => setStatus(play(moves)), [moves]);
 
-  function handleRestart() {
+  function handleRestart(): void {
     setMoves([]);
     setStatus("PENDING");
+    setGames(1);
+  }
+
+  function handleContinue(): void {
+    setMoves([]);
+    setStatus("PENDING");
+    setGames(games + 1);
   }
 
   return (
@@ -30,7 +38,7 @@ export default function Game() {
               </div>
               <div className="modal-score">
                 <p>Games</p>
-                <p>0</p>
+                <p>{games}</p>
               </div>
               <div className="modal-score">
                 <p>Player2</p>
@@ -43,7 +51,11 @@ export default function Game() {
               ANOTHER ROUND or RESTART?
             </p>
             <div className="button-container">
-              <button type="button" className="another-round">
+              <button
+                type="button"
+                className="another-round"
+                onClick={handleContinue}
+              >
                 ANOTHER ROUND
               </button>
               <button type="button" className="restart" onClick={handleRestart}>
@@ -54,7 +66,7 @@ export default function Game() {
         </div>
       )}
       <Board moves={moves} setMoves={setMoves} />
-      <Scores moves={moves} />
+      <Scores moves={moves} games={games} />
     </div>
   );
 }

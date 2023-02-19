@@ -3,9 +3,10 @@ import "../App.css";
 
 interface ScoresProp {
   moves: number[][];
+  games: number;
 }
 
-export default function Scores({ moves }: ScoresProp) {
+export default function Scores({ moves, games }: ScoresProp) {
   return (
     <div className="scores-container">
       <div
@@ -16,7 +17,7 @@ export default function Scores({ moves }: ScoresProp) {
       </div>
       <div className="score game-count">
         <h2>Games</h2>
-        <p>0</p>
+        <p>{games}</p>
       </div>
       <div
         className={`score player2 ${moves.length % 2 === 1 ? "current" : ""}`}
