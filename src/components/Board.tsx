@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "../App.css";
+import { moves } from "./Game";
 
 interface BoardProps {
-  moves: number[][];
+  moves: moves;
   setMoves: React.Dispatch<React.SetStateAction<number[][]>>;
 }
 
 export default function Board({ moves, setMoves }: BoardProps) {
-  const [moves1, setMoves1] = useState<number[][]>([]);
-  const [moves2, setMoves2] = useState<number[][]>([]);
+  const [moves1, setMoves1] = useState<moves>([]);
+  const [moves2, setMoves2] = useState<moves>([]);
 
   function handleClick(r: number, c: number) {
     if (moves.some((move) => move[0] === r && move[1] === c)) {
