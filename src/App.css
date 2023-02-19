@@ -68,6 +68,16 @@ h2 {
   font-size: 52px;
 }
 
+.cell:hover {
+  cursor: pointer;
+  background-color: #f6f6bab5;
+}
+
+.cell.disabled:hover {
+  cursor: default;
+  background-color: #e1e1e15a;
+}
+
 .middle-row {
   border-top: 3px solid #000000;
   border-bottom: 3px solid #000000;
