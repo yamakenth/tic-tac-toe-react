@@ -99,3 +99,8 @@ h2 {
 .score > p {
   font-size: 28px;
 }
+
+.score.current {
+  font-weight: bold;
+  transform: scale(1.1);
+}

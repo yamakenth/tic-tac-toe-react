@@ -9,7 +9,7 @@ export default function Game() {
   return (
     <div className="game-container">
       <Board moves={moves} setMoves={setMoves} />
-      <Scores />
+      <Scores moves={moves} />
     </div>
   );
 }
